@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" rx="40" fill="#10254b"/>
+  <g fill="none" stroke="#65e7f5" stroke-width="4">
+    <ellipse cx="100" cy="85" rx="55" ry="22"/>
+    <ellipse cx="100" cy="85" rx="55" ry="22" transform="rotate(60 100 85)"/>
+    <ellipse cx="100" cy="85" rx="55" ry="22" transform="rotate(120 100 85)"/>
+  </g>
+  <circle cx="100" cy="85" r="9" fill="#fff"/>
+  <text x="100" y="155" text-anchor="middle"
+        font-size="17" font-weight="bold"
+        font-family="Arial" fill="#fff">SCIENCE</text>
+</svg>
