@@ -1,0 +1,10 @@
+{
+  "name": "New Science World - Students Zone",
+  "short_name": "Science World",
+  "description": "Science study notes and quizzes for students.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4f7fc",
+  "theme_color": "#102b52",
+  "icons": []
+}

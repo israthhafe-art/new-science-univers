@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102b52">
+<meta name="description" content="New Science World Students Zone — science notes and quizzes for students.">
+<title>New Science World | Students Zone</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="logo">✦</div>
+  <div><p class="eyebrow">LEARN · EXPLORE · ACHIEVE</p><h1>New Science World</h1><p class="subtitle">STUDENTS ZONE</p></div>
+</header>
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="badge">YOUR SCIENCE SPACE</span>
+      <h2>Discover more.<br><span>Learn every day.</span></h2>
+      <p>Explore science topics, revise key ideas, and practise with quick quizzes.</p>
+      <a class="button" href="#subjects">Start learning ↓</a>
+    </div>
+    <div class="atom" aria-hidden="true">⚛</div>
+  </section>
+
+  <section class="section" id="subjects">
+    <p class="eyebrow">CHOOSE A SUBJECT</p><h2 class="section-title">Explore subjects</h2>
+    <div class="subject-grid">
+      <button class="subject biology" data-subject="Biology"><span class="icon">🧬</span><strong>Biology</strong><small>Life and living things</small><span class="arrow">↗</span></button>
+      <button class="subject physics" data-subject="Physics"><span class="icon">⚡</span><strong>Physics</strong><small>Energy, forces and motion</small><span class="arrow">↗</span></button>
+      <button class="subject chemistry" data-subject="Chemistry"><span class="icon">🧪</span><strong>Chemistry</strong><small>Matter and reactions</small><span class="arrow">↗</span></button>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="eyebrow">YOUR STUDY TOOLKIT</p><h2 class="section-title">Learn and practise</h2>
+    <div class="resource-grid">
+      <button class="resource" id="notesBtn"><span>📘</span><span class="resource-text"><strong>Study Notes</strong><small>Review important ideas</small></span><b>→</b></button>
+      <button class="resource" id="quizBtn"><span>📝</span><span class="resource-text"><strong>Quick Quiz</strong><small>Check what you know</small></span><b>→</b></button>
+      <button class="resource" id="videosBtn"><span>🎥</span><span class="resource-text"><strong>Video Lessons</strong><small>Open learning videos</small></span><b>→</b></button>
+    </div>
+  </section>
+
+  <section class="section panel" id="panel" aria-live="polite">
+    <div class="panel-head"><div><p class="eyebrow">LEARNING AREA</p><h2 id="panelTitle">Welcome!</h2></div><button id="closeBtn" class="close" aria-label="Close">×</button></div>
+    <div id="panelContent">Choose a subject or learning resource above.</div>
+  </section>
+
+  <section class="tip"><span>💡</span><div><strong>For students</strong><p>This is your starter app. You can add syllabus notes, PDF links, and video lesson links as you build it.</p></div></section>
+</main>
+<footer><div class="footer-logo">✦</div><strong>New Science World</strong><p>Students Zone · Learn a little every day</p><small>Educational starter project</small></footer>
+<script src="app.js"></script>
+</body>
+</html>
