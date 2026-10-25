@@ -1,69 +1,157 @@
-// Category selection.
-panelContent.addEventListener('click', event => {
-  const button = event.target.closest('[data-category]');
+<p id="quizScore">
+            Score: ${score}
+          </p>
 
-  if (!button) return;
+          <button id="nextQuestion" hidden>
+            Next Question
+          </button>
+        
+      );
 
-  showCategory(
-    button.dataset.subjectName,
-    button.dataset.category
-  );
-});
+      const optionButtons = document.querySelectorAll(
+        '#quizOptions .quiz-option'
+      );
 
-// Study Notes button.
-document.getElementById('notesBtn').addEventListener('click', () => {
-  show(
-    'Study Notes',
-    '<p>Choose Biology, Physics or Chemistry to explore the five study sections.</p>'
-  );
-});
+      optionButtons.forEach(button => {
 
-// Video Lessons button.
-document.getElementById('videosBtn').addEventListener('click', () => {
-  show(
-    'Video Lessons',
-    '<p>Add trusted lesson-video links to the app.js file when they are ready.</p>'
-  );
-});
+        button.addEventListener('click', () => {
 
-// Quick Science Quiz.
-document.getElementById('quizBtn').addEventListener('click', () => {
-  show(
-    'Quick Science Quiz',
-    
-      <p><b>Question 1 of 3:</b> What is the basic structural unit of living organisms?</p>
-      <div id="quizOptions">
-        <button class="quiz-option" data-correct="false">Atom</button>
-        <button class="quiz-option" data-correct="true">Cell</button>
-        <button class="quiz-option" data-correct="false">Organ</button>
-      </div>
-      <p id="quizFeedback" aria-live="polite"></p>
-    
-  );
+          if (answered) return;
 
-  document.querySelectorAll('.quiz-option').forEach(button => {
-    button.addEventListener('click', () => {
-      document.getElementById('quizFeedback').textContent =
-        button.dataset.correct === 'true'
-          ? 'Correct! A cell is the basic unit of life.'
-          : 'Not quite. Try again!';
-    });
+          answered = true;
+
+          const selectedAnswer = Number(
+            button.dataset.answerIndex
+          );
+
+          const feedback = document.getElementById('quizFeedback');
+          const scoreBox = document.getElementById('quizScore');
+          const nextButton = document.getElementById('nextQuestion');
+
+          if (selectedAnswer === q.answer) {
+
+            score++;
+
+            feedback.textContent =
+              'Correct! ' + q.explanation;
+
+          } else {
+
+            feedback.textContent =
+              'Incorrect. ' +
+              'Correct answer: ' +
+              q.options[q.answer] +
+              '. ' +
+              q.explanation;
+
+          }
+
+          scoreBox.textContent =
+            'Score: ' + score + ' / ' + quizQuestions.length;
+
+          optionButtons.forEach(option => {
+            option.disabled = true;
+          });
+
+          nextButton.hidden = false;
+
+          nextButton.textContent =
+            currentQuestion === quizQuestions.length - 1
+              ? 'Show Final Score'
+              : 'Next Question';
+
+          nextButton.addEventListener('click', () => {
+
+            currentQuestion++;
+
+            if (currentQuestion < quizQuestions.length) {
+
+              displayQuestion();
+
+            } else {
+
+              show(
+                'Quiz Completed',
+
+                
+                  <h3>Well Done!</h3>
+
+                  <p>
+                    You have completed the Science Quiz.
+                  </p>
+
+                  <h2>
+                    Your Score: ${score} / ${quizQuestions.length}
+                  </h2>
+
+                  <button id="restartQuiz">
+                    Try Again
+                  </button>
+                `
+              );
+
+              const restartButton =
+                document.getElementById('restartQuiz');
+
+              if (restartButton) {
+
+                restartButton.addEventListener('click', () => {
+
+                  currentQuestion = 0;
+                  score = 0;
+
+                  displayQuestion();
+
+                });
+
+              }
+
+            }
+
+          }, { once: true });
+
+        });
+
+      });
+
+    }
+
+    displayQuestion();
+
   });
-});
 
-// Close the panel.
-document.getElementById('closeBtn').addEventListener('click', () => {
-  panel.classList.remove('visible');
-});
+}
 
-// Register service worker.
+
+// ============================================
+// SERVICE WORKER REGISTRATION
+// ============================================
+
 if (
   'serviceWorker' in navigator &&
   location.protocol.startsWith('http')
 ) {
+
   window.addEventListener('load', () => {
+
     navigator.serviceWorker
       .register('./sw.js')
-      .catch(() => {});
+      .catch(error => {
+        console.log(
+          'Service Worker registration failed:',
+          error
+        );
+      });
+
   });
+
 }
+
+
+// ============================================
+// APPLICATION LOADED
+// ============================================
+
+console.log(
+  'New Science World - Students Zone loaded successfully!'
+);
